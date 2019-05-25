@@ -1,13 +1,5 @@
 @extends('layouts.app')
 
-@section('sidebar')
-  @include('reception._header')
-@endsection
-
-@section('header-title')
-  <h6 class="text-white text-uppercase">Reception Department</h6>
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -22,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in as receptionist!
+                    You are logged  treatment page in!
                 </div>
             </div>
         </div>
