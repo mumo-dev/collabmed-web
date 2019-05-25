@@ -19,9 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
     Route::get('/', 'Admin\HomeController@index')->name('admin.home'); 
     Route::get('/accounts', 'Admin\AccountsController@index')->name('admin.accounts'); 
     Route::get('/accounts/create', 'Admin\AccountsController@create')->name('admin.accounts.create'); 
     Route::post('/accounts', 'Admin\AccountsController@store')->name('admin.accounts.store'); 
 });
+
+Route::group(['prefix'=>'reception', 'middleware'=>['auth','reception']], function(){
+    Route::get('/', 'Reception\HomeController@index')->name('reception.home');   
+});
+
+Route::group(['prefix'=>'treatment', 'middleware'=>['auth','treatment']], function(){
+    Route::get('/', 'TreatmentController@index')->name('treatment.home');   
+});
+
