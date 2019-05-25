@@ -14,7 +14,12 @@
           <div v-if="loading">
               <app-loading></app-loading>
           </div>
-
+          <div class="alert alert-success mb-2" v-if="success">
+              {{ successMessage }}
+          </div>
+          <div class="alert alert-warning mb-2" v-if="error">
+              {{ errorMessage }}
+          </div>
           <div class="" v-if="!loading && patient.name">
             <table class="table">
   
@@ -60,12 +65,7 @@
               </button>
 
           </div>
-           <div class="alert alert-success" v-if="success">
-              {{ successMessage }}
-          </div>
-          <div class="alert alert-warning" v-if="error">
-              {{ errorMessage }}
-          </div>
+           
 
           
     </div>

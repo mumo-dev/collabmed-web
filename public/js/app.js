@@ -37446,6 +37446,26 @@ var render = function() {
         _vm._v(" "),
         _vm.loading ? _c("div", [_c("app-loading")], 1) : _vm._e(),
         _vm._v(" "),
+        _vm.success
+          ? _c("div", { staticClass: "alert alert-success mb-2" }, [
+              _vm._v(
+                "\r\n              " +
+                  _vm._s(_vm.successMessage) +
+                  "\r\n          "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.error
+          ? _c("div", { staticClass: "alert alert-warning mb-2" }, [
+              _vm._v(
+                "\r\n              " +
+                  _vm._s(_vm.errorMessage) +
+                  "\r\n          "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         !_vm.loading && _vm.patient.name
           ? _c("div", {}, [
               _c("table", { staticClass: "table" }, [
@@ -37568,26 +37588,6 @@ var render = function() {
                       )
                     ]
                   )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.success
-          ? _c("div", { staticClass: "alert alert-success" }, [
-              _vm._v(
-                "\r\n              " +
-                  _vm._s(_vm.successMessage) +
-                  "\r\n          "
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.error
-          ? _c("div", { staticClass: "alert alert-warning" }, [
-              _vm._v(
-                "\r\n              " +
-                  _vm._s(_vm.errorMessage) +
-                  "\r\n          "
-              )
             ])
           : _vm._e()
       ])
