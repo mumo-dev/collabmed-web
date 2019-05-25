@@ -132,14 +132,12 @@
                  this.submitting = this.error= false;
                  this.success = true;
                  this.successMessage = 'Patient Checked In successfully'
-                
-                 console.log(result)
-                
+       
               }).catch((err) => {
                  this.submitting = false;
                  this.error = true;
                  this.errorMessage = err.response.data.message || 'Some Error Occurred'
-                 console.log(err.response)
+                
               });
           }
 

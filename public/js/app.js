@@ -2050,12 +2050,10 @@ __webpack_require__.r(__webpack_exports__);
         _this2.submitting = _this2.error = false;
         _this2.success = true;
         _this2.successMessage = 'Patient Checked In successfully';
-        console.log(result);
       }).catch(function (err) {
         _this2.submitting = false;
         _this2.error = true;
         _this2.errorMessage = err.response.data.message || 'Some Error Occurred';
-        console.log(err.response);
       });
     }
   }
