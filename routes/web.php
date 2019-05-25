@@ -31,6 +31,9 @@ Route::group(['prefix'=>'reception', 'middleware'=>['auth','reception']], functi
     Route::get('/patient/create', 'Reception\HomeController@createPatient')->name('reception.patient.create'); 
 
     Route::post('/patient','Reception\HomeController@storePatient');
+    Route::get('/patient/get/{id}','Reception\HomeController@fetchPatient');
+
+    Route::post('/checkin', 'Reception\HomeController@recordVisit');
 });
 
 Route::group(['prefix'=>'treatment', 'middleware'=>['auth','treatment']], function(){

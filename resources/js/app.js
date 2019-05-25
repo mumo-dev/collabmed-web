@@ -21,6 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('app-patient-create', require('./components/CreatePatient.vue').default);
+Vue.component('app-reception', require('./components/Reception.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

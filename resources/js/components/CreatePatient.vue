@@ -3,7 +3,33 @@
     <div class="alert alert-success" role="alert" v-show="success">
        {{ successMessage}}
      </div>
-      <div class="alert alert-danger" role="alert" v-show="error">
+     <div class="card mb-2" v-show="success">
+         <div class="card-header"> New Patient Details</div>
+            <div class="card-body">
+                
+                <table class="table">
+    
+                    <tr>
+                        <th>#ID:</th>
+                        <td>{{ patient.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{ patient.name}} </td>
+                    </tr>
+                    <tr>
+                        <th>Age:</th>
+                        <td>{{ patient.age}}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender:</th>
+                        <td>{{ patient.gender}}</td>
+                    </tr>
+                
+                </table>
+            </div>
+     </div>
+    <div class="alert alert-danger" role="alert" v-show="error">
        {{ errorMessage}}
      </div>
     <div class="card">
@@ -90,11 +116,7 @@
                     this.successMessage=data.message
                     this.errorMessage ='';
 
-                    this.patient = {
-                        name:'',
-                        gender:'',
-                        age:''
-                    }
+                    this.patient = data.patient
 
                 })
                 .catch(err=>{
