@@ -21,26 +21,8 @@
               {{ errorMessage }}
           </div>
           <div class="" v-if="!loading && patient.name">
-            <table class="table">
-  
-                  <tr>
-                    <th>#ID:</th>
-                    <td>{{ patient.id}}</td>
-                  </tr>
-                  <tr>
-                    <th>Name:</th>
-                    <td>{{ patient.name}} </td>
-                  </tr>
-                  <tr>
-                    <th>Age:</th>
-                    <td>{{ patient.age}}</td>
-                  </tr>
-                  <tr>
-                    <th>Gender:</th>
-                    <td>{{ patient.gender}}</td>
-                  </tr>
-             
-              </table>
+            
+              <app-show-patient :patient="patient"></app-show-patient>
 
               <h6><strong class="text-success">Choose Department To Refer Patient to: </strong> </h6>
               <select  class="form-control" v-model="department">
@@ -77,9 +59,11 @@
 
     import axios from 'axios'
     import Loading from './Loading.vue'
+    import Patient from './ShowPatient.vue'
     export default {
        components:{
-         'app-loading': Loading
+         'app-loading': Loading,
+         'app-show-patient':Patient
        },
 
        

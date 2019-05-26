@@ -18,6 +18,7 @@ class CreateVisitsTable extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->string('department');
             $table->unsignedBigInteger('checked_in_by');
+            $table->boolean('seen')->default(false);
             $table->unsignedBigInteger('seen_by')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();

@@ -5,28 +5,8 @@
      </div>
      <div class="card mb-2" v-show="success">
          <div class="card-header"> New Patient Details</div>
-            <div class="card-body">
-                
-                <table class="table">
-    
-                    <tr>
-                        <th>#ID:</th>
-                        <td>{{ patient.id}}</td>
-                    </tr>
-                    <tr>
-                        <th>Name:</th>
-                        <td>{{ patient.name}} </td>
-                    </tr>
-                    <tr>
-                        <th>Age:</th>
-                        <td>{{ patient.age}}</td>
-                    </tr>
-                    <tr>
-                        <th>Gender:</th>
-                        <td>{{ patient.gender}}</td>
-                    </tr>
-                
-                </table>
+            <div class="card-body">   
+               <app-show-patient :patient="patient"></app-show-patient>
             </div>
      </div>
     <div class="alert alert-danger" role="alert" v-show="error">
@@ -73,7 +53,12 @@
 <script>
 
     import axios from 'axios'
+    import Patient from './ShowPatient.vue'
+    
     export default {
+        components:{
+         'app-show-patient':Patient
+        },
         data(){
             return {
                 patient:{
