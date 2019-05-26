@@ -27,7 +27,8 @@ Vue.component('app-dashboard', require('./components/Dashboard.vue').default);
 Vue.component('app-referral-dashboard', require('./components/ReferralDashboard.vue').default);
 Vue.component('app-visit', require('./components/Visit.vue').default);
 Vue.component('app-referral', require('./components/Referral.vue').default);
-
+Vue.component('app-reports-dashboard', require('./components/ReportsDashboard.vue').default);
+Vue.component('app-report', require('./components/Report.vue').default);
 
 
 /**

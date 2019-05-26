@@ -25,9 +25,13 @@ Route::post('/referral/record/','PatientsController@patientReferralReport');
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
     Route::get('/', 'Admin\HomeController@index')->name('admin.home'); 
+    Route::get('/reports', 'Admin\HomeController@reports')->name('admin.reports'); 
     Route::get('/accounts', 'Admin\AccountsController@index')->name('admin.accounts'); 
     Route::get('/accounts/create', 'Admin\AccountsController@create')->name('admin.accounts.create'); 
     Route::post('/accounts', 'Admin\AccountsController@store')->name('admin.accounts.store'); 
+
+    Route::get('/reports/patient/{id}', 'Admin\HomeController@fetchReport');
+    Route::get('/reports/{id}', 'Admin\HomeController@showReport');
 });
 
 Route::group(['prefix'=>'reception', 'middleware'=>['auth','reception']], function(){
