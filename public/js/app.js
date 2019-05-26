@@ -2494,6 +2494,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2509,8 +2524,12 @@ __webpack_require__.r(__webpack_exports__);
       successMessage: '',
       errorMessage: '',
       patientNotFound: false,
-      visits: []
+      visits: [],
+      allvisits: []
     };
+  },
+  created: function created() {
+    this.allVisits();
   },
   methods: {
     searchPatient: function searchPatient() {
@@ -2531,6 +2550,19 @@ __webpack_require__.r(__webpack_exports__);
         console.log(data);
       }).catch(function (err) {
         _this.loading = false;
+        console.log(err);
+      });
+    },
+    allVisits: function allVisits() {
+      var _this2 = this;
+
+      this.loading = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/admin/reports/all/visits').then(function (_ref2) {
+        var data = _ref2.data;
+        _this2.loading = false;
+        _this2.allvisits = data;
+      }).catch(function (err) {
+        _this2.loading = false;
         console.log(err);
       });
     },
@@ -39054,6 +39086,60 @@ var render = function() {
                             [
                               _vm._v(
                                 "\r\n                  " +
+                                  _vm._s(visit.created_at) +
+                                  "\r\n                 "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.allvisits.length > 0 && !_vm.loading && !_vm.patientId
+          ? _c(
+              "div",
+              [
+                _c("h5", { staticClass: "text-success" }, [
+                  _vm._v("Reports for All Visits")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.allvisits, function(visit) {
+                  return _c(
+                    "ul",
+                    { key: visit.id, staticClass: "list-group" },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "list-group-item mb-1",
+                          staticStyle: { cursor: "pointer" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.redirectToVisitDetailPage(visit.id)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticStyle: {
+                                color: "black",
+                                "text-decoration": "none"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\r\n                   " +
+                                  _vm._s(visit.patient.name) +
+                                  " - " +
                                   _vm._s(visit.created_at) +
                                   "\r\n                 "
                               )

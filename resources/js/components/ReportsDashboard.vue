@@ -35,6 +35,21 @@
             </ul>
 
           </div>
+          <!-- all patients -->
+          <div v-if="allvisits.length > 0 && !loading && !patientId">
+            <h5 class="text-success">Reports for All Visits</h5>
+            <ul class="list-group" v-for="visit in allvisits" :key="visit.id">
+              <li class="list-group-item mb-1" style="cursor:pointer" 
+                  @click.prevent="redirectToVisitDetailPage(visit.id)">
+                 <a  style="color:black;text-decoration:none">
+                   {{ visit.patient.name }} - {{ visit.created_at }}
+                 </a>
+              </li>
+             
+            </ul>
+
+          </div>
+          
           <div   class="alert alert-info" v-show="patientNotFound">
                Patient Not Found
           </div>
@@ -59,13 +74,14 @@ export default {
       successMessage:'',
       errorMessage:'',
       patientNotFound:false,
-      visits:[]
+      visits:[],
+      allvisits:[]
     }
   },
 
-  
-
-  
+  created(){
+    this.allVisits();
+  },
 
   methods:{
     searchPatient(){
@@ -90,7 +106,18 @@ export default {
 
     },
 
-    
+    allVisits(){
+      this.loading = true;
+      axios.get('/admin/reports/all/visits')
+      .then(({data})=>{
+          this.loading = false;
+          this.allvisits = data;
+      })
+      .catch(err=>{
+        this.loading = false;
+        console.log(err)
+      });
+    },
 
     redirectToVisitDetailPage(id){
        window.location.href = '/admin/reports/'+id;

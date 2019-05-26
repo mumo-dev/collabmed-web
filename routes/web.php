@@ -32,6 +32,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
 
     Route::get('/reports/patient/{id}', 'Admin\HomeController@fetchReport');
     Route::get('/reports/{id}', 'Admin\HomeController@showReport');
+    Route::get('/reports/all/visits', 'Admin\HomeController@allVisits' );
 });
 
 Route::group(['prefix'=>'reception', 'middleware'=>['auth','reception']], function(){

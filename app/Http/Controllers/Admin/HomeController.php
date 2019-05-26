@@ -20,7 +20,11 @@ class HomeController extends Controller
 
     public function fetchReport($id)
     {
-      $visits= Visit::with(['patient'])->where('patient_id',$id)->latest()->get();
+      $visits= Visit::with(['patient'])
+                ->where('patient_id',$id)
+                ->where('seen',1)
+                ->latest()
+                ->get();
       return $visits;
     }
 
@@ -28,5 +32,12 @@ class HomeController extends Controller
     {
       $visit= Visit::with(['patient','referrals','medicalPractitioner'])->findorFail($id);
       return view('admin.report', compact('visit'));
+    }
+
+
+    public function allVisits()
+    {
+      $visits = Visit::with('patient')->where('seen',1)->latest()->get();
+      return $visits;
     }
 }
