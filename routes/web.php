@@ -39,6 +39,9 @@ Route::group(['prefix'=>'reception', 'middleware'=>['auth','reception']], functi
 Route::group(['prefix'=>'treatment', 'middleware'=>['auth','treatment']], function(){
     Route::get('/', 'TreatmentController@index')->name('treatment.home');  
     Route::get('/patients','TreatmentController@fetchPatients');
+    Route::post('/patient/seen','TreatmentController@patienSeen');
+    Route::post('/patient/savenotes','TreatmentController@savePatientNotes');
+    Route::post('/referral','TreatmentController@saveReferral');
     Route::get('/visit/{id}','TreatmentController@showVisit');
 });
 

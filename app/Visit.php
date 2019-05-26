@@ -22,4 +22,9 @@ class Visit extends Model
     {
         return $this->belongsTo('App\User', 'checked_in_by');
     }
+
+    public function referrals()
+    {
+        return $this->hasMany('App\Referral');
+    }
 }

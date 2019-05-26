@@ -112,7 +112,7 @@
                     this.success = false;
                     this.error = true;
                     this.successMessage=''
-                    this.errorMessage = err.response.data.message || "Error saving the poll";
+                    this.errorMessage = err.response.data.message || "Error saving the patient";
                 })
             }
         }

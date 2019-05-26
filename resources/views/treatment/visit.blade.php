@@ -10,4 +10,7 @@
 
 @section('content')
      {{-- <app-doctor-home></app-doctor-home> --}}
+     <app-visit-details :visit="{{$visit}}"></app-visit-details>
+    
+
 @endsection

@@ -90,7 +90,7 @@ export default {
       .then(({data})=>{
         this.loading = false;
         this.visits  = data;
-        console.log(data);
+        
       })
       .catch(err=>{
         this.loading = false;

@@ -1871,7 +1871,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.success = false;
         _this.error = true;
         _this.successMessage = '';
-        _this.errorMessage = err.response.data.message || "Error saving the poll";
+        _this.errorMessage = err.response.data.message || "Error saving the patient";
       });
     }
   }
@@ -1984,7 +1984,6 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref.data;
         _this2.loading = false;
         _this2.visits = data;
-        console.log(data);
       }).catch(function (err) {
         _this2.loading = false;
         console.log(err);
@@ -2185,6 +2184,223 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['patient']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/VisitDetails.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/VisitDetails.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ShowPatient_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShowPatient.vue */ "./resources/js/components/ShowPatient.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['visit'],
+  components: {
+    'app-show-patient': _ShowPatient_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  computed: {
+    dataIsValid: function dataIsValid() {
+      if (this.referral.remarks && this.referral.department) {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  data: function data() {
+    return {
+      notes: this.visit.notes,
+      referral: {
+        remarks: '',
+        department: ''
+      },
+      success: false,
+      error: false,
+      errorMessage: '',
+      successMessage: '',
+      submitting: false,
+      submittingnotes: false,
+      sendingreferral: false
+    };
+  },
+  methods: {
+    markAsSeen: function markAsSeen() {
+      var _this = this;
+
+      var data = {
+        visitId: this.visit.id,
+        notes: this.notes
+      };
+      this.submitting = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/treatment/patient/seen', data).then(function () {
+        _this.error = _this.submitting = false;
+        _this.success = true;
+        _this.successMessage = ' Patient Marked as seen';
+        setTimeout(function () {
+          window.location.href = "/treatment";
+        }, 2000);
+      }).catch(function (err) {
+        console.log(err);
+        _this.submitting = false;
+        _this.error = true;
+        _this.errorMessage = err.response.data.message || "Error saving the saving data";
+      });
+    },
+    savePatientNotes: function savePatientNotes() {
+      var _this2 = this;
+
+      var data = {
+        visitId: this.visit.id,
+        notes: this.notes
+      };
+      this.submittingnotes = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/treatment/patient/savenotes', data).then(function () {
+        _this2.error = _this2.submittingnotes = false;
+        _this2.success = true;
+        _this2.successMessage = ' Patient Notes saved successfully';
+      }).catch(function (err) {
+        console.log(err);
+        _this2.submittingnotes = false;
+        _this2.error = true;
+        _this2.errorMessage = err.response.data.message || "Error saving the saving data";
+      });
+    },
+    sendReferral: function sendReferral() {
+      var _this3 = this;
+
+      var data = {
+        visitId: this.visit.id,
+        patientId: this.visit.patient.id,
+        department: this.referral.department,
+        notes: this.referral.remarks
+      };
+      this.sendingreferral = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/treatment/referral', data).then(function () {
+        _this3.error = _this3.sendingreferral = false;
+        _this3.success = true;
+        _this3.successMessage = ' Referral send successfully';
+      }).catch(function (err) {
+        console.log(err);
+        _this3.sendingreferral = false;
+        _this3.error = true;
+        _this3.errorMessage = err.response.data.message || "Error sending referral";
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37893,6 +38109,374 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/VisitDetails.vue?vue&type=template&id=1fafba3c&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/VisitDetails.vue?vue&type=template&id=1fafba3c& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-12" }, [
+    _vm.success
+      ? _c("div", { staticClass: "alert alert-success mb-2" }, [
+          _vm._v("\n        " + _vm._s(_vm.successMessage) + "\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.error
+      ? _c("div", { staticClass: "alert alert-warning mb-2" }, [
+          _vm._v("\n        " + _vm._s(_vm.errorMessage) + "\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header bg-white" }, [
+        _vm._v("Visit Page")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("h5", { staticClass: "text-success" }, [
+            _vm._v("Patient Details")
+          ]),
+          _vm._v(" "),
+          _c("app-show-patient", { attrs: { patient: _vm.visit.patient } }),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Patient Notes:")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.notes,
+                    expression: "notes"
+                  }
+                ],
+                staticClass: "form-control",
+                domProps: { value: _vm.notes },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.notes = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "(Clicking SEEN saves notes and ends the visit session.\n          If You want to save patients notes before sending a referral,\n          click save notes instead. ) "
+              )
+            ]),
+            _vm._v(" "),
+            !_vm.submittingnotes
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { disabled: !_vm.notes },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.savePatientNotes($event)
+                      }
+                    }
+                  },
+                  [_vm._v("SAVE NOTES")]
+                )
+              : _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success ",
+                    attrs: { type: "button", disabled: "" }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "spinner-grow spinner-grow-sm",
+                      attrs: { role: "status", "aria-hidden": "true" }
+                    }),
+                    _vm._v("\n            Saving...\n        ")
+                  ]
+                ),
+            _vm._v(" "),
+            !_vm.submitting
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { disabled: !_vm.notes },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.markAsSeen($event)
+                      }
+                    }
+                  },
+                  [_vm._v("SEEN")]
+                )
+              : _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success ",
+                    attrs: { type: "button", disabled: "" }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "spinner-grow spinner-grow-sm",
+                      attrs: { role: "status", "aria-hidden": "true" }
+                    }),
+                    _vm._v("\n            Saving...\n        ")
+                  ]
+                ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                attrs: {
+                  "data-toggle": "modal",
+                  "data-target": "#referralModal"
+                }
+              },
+              [_vm._v("Send Referal")]
+            )
+          ])
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "referralModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm.success
+                  ? _c("div", { staticClass: "alert alert-success mb-2" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.successMessage) +
+                          "\n          "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.error
+                  ? _c("div", { staticClass: "alert alert-warning mb-2" }, [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(_vm.errorMessage) +
+                          "\n          "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Patient Name:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", disabled: "" },
+                    domProps: { value: _vm.visit.patient.name }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [
+                    _vm._v("Choose Department to Refer Patient To:")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.referral.department,
+                          expression: "referral.department"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.referral,
+                            "department",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "option",
+                        { attrs: { value: "", selected: "", disabled: "" } },
+                        [_vm._v("Choose ...")]
+                      ),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "laboratory" } }, [
+                        _vm._v("Laboratory")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "radiology" } }, [
+                        _vm._v("Radiology")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "optical" } }, [
+                        _vm._v("Optical")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Remarks:")]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.referral.remarks,
+                        expression: "referral.remarks"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    domProps: { value: _vm.referral.remarks },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.referral, "remarks", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                !_vm.sendingreferral
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button", disabled: !_vm.dataIsValid },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.sendReferral($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Send")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success ",
+                        attrs: { type: "button", disabled: "" }
+                      },
+                      [
+                        _c("span", {
+                          staticClass: "spinner-grow spinner-grow-sm",
+                          attrs: { role: "status", "aria-hidden": "true" }
+                        }),
+                        _vm._v("\n            Sending...\n        ")
+                      ]
+                    )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Send Referal")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -50057,6 +50641,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('app-patient-create', __webpack_require__(/*! ./components/CreatePatient.vue */ "./resources/js/components/CreatePatient.vue").default);
 Vue.component('app-reception', __webpack_require__(/*! ./components/Reception.vue */ "./resources/js/components/Reception.vue").default);
 Vue.component('app-doctor-home', __webpack_require__(/*! ./components/DoctorHome.vue */ "./resources/js/components/DoctorHome.vue").default);
+Vue.component('app-visit-details', __webpack_require__(/*! ./components/VisitDetails */ "./resources/js/components/VisitDetails.vue").default); // app-visit-details
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50467,6 +51053,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowPatient_vue_vue_type_template_id_e9304fa6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowPatient_vue_vue_type_template_id_e9304fa6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/VisitDetails.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/VisitDetails.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VisitDetails_vue_vue_type_template_id_1fafba3c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VisitDetails.vue?vue&type=template&id=1fafba3c& */ "./resources/js/components/VisitDetails.vue?vue&type=template&id=1fafba3c&");
+/* harmony import */ var _VisitDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VisitDetails.vue?vue&type=script&lang=js& */ "./resources/js/components/VisitDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _VisitDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VisitDetails_vue_vue_type_template_id_1fafba3c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VisitDetails_vue_vue_type_template_id_1fafba3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/VisitDetails.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/VisitDetails.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/VisitDetails.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VisitDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./VisitDetails.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/VisitDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VisitDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/VisitDetails.vue?vue&type=template&id=1fafba3c&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/VisitDetails.vue?vue&type=template&id=1fafba3c& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VisitDetails_vue_vue_type_template_id_1fafba3c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./VisitDetails.vue?vue&type=template&id=1fafba3c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/VisitDetails.vue?vue&type=template&id=1fafba3c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VisitDetails_vue_vue_type_template_id_1fafba3c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VisitDetails_vue_vue_type_template_id_1fafba3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
