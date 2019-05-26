@@ -48,9 +48,18 @@ Route::group(['prefix'=>'treatment', 'middleware'=>['auth','treatment']], functi
     Route::get('/visit/{id}','TreatmentController@showVisit');
 });
 
+
 Route::group(['prefix'=>'laboratory', 'middleware'=>['auth','laboratory']], function(){
     Route::get('/', 'LaboratoryController@index')->name('lab.home');  
     Route::get('/referrals', 'LaboratoryController@referrals')->name('lab.referrals');
     Route::get('/referrals/{id}', 'LaboratoryController@showReferral');
     Route::get('/visit/{id}','LaboratoryController@showVisit');    
+});
+
+
+Route::group(['prefix'=>'optical', 'middleware'=>['auth','optical']], function(){
+    Route::get('/', 'OpticalController@index')->name('optical.home');  
+    Route::get('/referrals', 'OpticalController@referrals')->name('optical.referrals');
+    Route::get('/referrals/{id}', 'OpticalController@showReferral');
+    Route::get('/visit/{id}','OpticalController@showVisit');    
 });
