@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'treatment' => \App\Http\Middleware\Treatment::class,
         'laboratory' => \App\Http\Middleware\Laboratory::class,
         'optical' => \App\Http\Middleware\Optical::class,
+        'radiology' => \App\Http\Middleware\Radiology::class,
+        'nursing' => \App\Http\Middleware\Nursing::class,
     ];
 
     /**

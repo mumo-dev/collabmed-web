@@ -53,6 +53,12 @@ class LoginController extends Controller
             case 'optical':
                 return '/optical'; 
 
+            case 'nursing':
+                return '/nursing'; 
+
+            case 'radiology':
+                return '/radiology'; 
+
             default:
                 return '/home';
         }
