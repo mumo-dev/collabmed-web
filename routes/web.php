@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/patients/{department}', 'PatientsController@getPatientsDepartment');
+Route::post('/patient/seen/','PatientsController@patienSeen');
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin']], function(){
     Route::get('/', 'Admin\HomeController@index')->name('admin.home'); 
@@ -38,10 +40,13 @@ Route::group(['prefix'=>'reception', 'middleware'=>['auth','reception']], functi
 
 Route::group(['prefix'=>'treatment', 'middleware'=>['auth','treatment']], function(){
     Route::get('/', 'TreatmentController@index')->name('treatment.home');  
-    Route::get('/patients','TreatmentController@fetchPatients');
     Route::post('/patient/seen','TreatmentController@patienSeen');
     Route::post('/patient/savenotes','TreatmentController@savePatientNotes');
     Route::post('/referral','TreatmentController@saveReferral');
     Route::get('/visit/{id}','TreatmentController@showVisit');
 });
 
+Route::group(['prefix'=>'laboratory', 'middleware'=>['auth','laboratory']], function(){
+    Route::get('/', 'LaboratoryController@index')->name('lab.home');  
+    Route::get('/visit/{id}','LaboratoryController@showVisit');    
+});

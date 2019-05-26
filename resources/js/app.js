@@ -22,9 +22,11 @@ window.Vue = require('vue');
 
 Vue.component('app-patient-create', require('./components/CreatePatient.vue').default);
 Vue.component('app-reception', require('./components/Reception.vue').default);
-Vue.component('app-doctor-home', require('./components/DoctorHome.vue').default);
-Vue.component('app-visit-details', require('./components/VisitDetails').default);
-// app-visit-details
+Vue.component('app-visit-details', require('./components/VisitDetails.vue').default);
+Vue.component('app-dashboard', require('./components/Dashboard.vue').default);
+Vue.component('app-visit', require('./components/Visit.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1,7 +1,9 @@
 <template>
 <div class="col-md-8">
   <div class="card">
-    <div class="card-header bg-white">Dashboard</div>
+    <div class="card-header bg-white">Dashboard 
+      <span class="float-right p-2 badge badge-danger">{{ visits.length}}</span>
+    </div>
       <div class="card-body">
         <!-- You are logged in as receptionist! -->
         <div class="d-flex">
@@ -26,9 +28,9 @@
             <ul class="list-group" v-for="visit in patientsVisits" :key="visit.id">
               <li class="list-group-item mb-1" style="cursor:pointer" 
                   @click.prevent="redirectToVisitDetailPage(visit.id)">
-                <a :href="'/treatment/visit/'+ visit.id" style="color:black;text-decoration:none">
+                 <a  style="color:black;text-decoration:none">
                   {{ visit.patient.name }}
-                </a>
+                 </a>
               </li>
              
             </ul>
@@ -37,12 +39,6 @@
           <div v-else class="alert alert-info">
               No Patient in queue
           </div>
-
-          
-        
-           
-
-          
     </div>
   </div>
 </div>
@@ -52,6 +48,7 @@
 import axios from 'axios'
 import Loading from './Loading.vue'
 export default {
+  props:['department'],
   components:{
       'app-loading': Loading,
   },
@@ -86,7 +83,9 @@ export default {
     },
     fetchPatients(){
       this.loading = true;
-      axios.get('/treatment/patients')
+      let url = '';
+      if(this.department)
+      axios.get('/patients/'+ this.department)
       .then(({data})=>{
         this.loading = false;
         this.visits  = data;
@@ -99,9 +98,10 @@ export default {
 
     },
 
+    
+
     redirectToVisitDetailPage(id){
-      // alert(id);
-      window.location.href = '/treatment/visit/'+id;
+      window.location.href = '/'+this.department+'/visit/'+id;
     }
   }
 }

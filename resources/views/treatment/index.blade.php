@@ -9,5 +9,5 @@
 @endsection
 
 @section('content')
-     <app-doctor-home></app-doctor-home>
+     <app-dashboard :department="'treatment'"></app-dashboard>
 @endsection
