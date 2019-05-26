@@ -31,6 +31,8 @@ class LaboratoryController extends Controller
         
         if($referral->department == 'laboratory'){
             return view('laboratory.referral', compact('referral'));
+        }else {
+            \abort(404);
         }
 
     }

@@ -13,6 +13,15 @@
 
         <h5 class="text-success">Patient Details</h5>
         <app-show-patient :patient="visit.patient"></app-show-patient>
+        <hr>
+        <div v-for="referral in visit.referrals" :key="referral.id" class="p-2 m-1 bg-light">
+          <label>
+            <strong class="text-success"> 
+              Referral report from {{ referral.department }} Department {{ referral.updated_at}}
+            </strong></label>
+          <p> {{ referral.reports }}</p>
+        </div>
+        <hr>
         <div>
           <div class="form-group">
             <label>Patient Notes:</label>

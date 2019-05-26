@@ -2620,6 +2620,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38873,6 +38882,32 @@ var render = function() {
           _vm._v(" "),
           _c("app-show-patient", { attrs: { patient: _vm.visit.patient } }),
           _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _vm._l(_vm.visit.referrals, function(referral) {
+            return _c(
+              "div",
+              { key: referral.id, staticClass: "p-2 m-1 bg-light" },
+              [
+                _c("label", [
+                  _c("strong", { staticClass: "text-success" }, [
+                    _vm._v(
+                      " \n            Referral report from " +
+                        _vm._s(referral.department) +
+                        " Department " +
+                        _vm._s(referral.updated_at) +
+                        "\n          "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(" " + _vm._s(referral.reports))])
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
           _c("div", [
             _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("Patient Notes:")]),
@@ -38978,7 +39013,7 @@ var render = function() {
             )
           ])
         ],
-        1
+        2
       )
     ]),
     _vm._v(" "),
