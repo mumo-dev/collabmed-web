@@ -1,8 +1,8 @@
 <template>
 <div class="col-md-8">
   <div class="card">
-    <div class="card-header bg-white">Dashboard 
-      <span class="float-right p-2 badge badge-danger">{{ visits.length}}</span>
+    <div class="card-header bg-white">Referrals 
+      <span class="float-right p-2 badge badge-danger">{{ referrals.length}}</span>
     </div>
       <div class="card-body">
         <!-- You are logged in as receptionist! -->
@@ -28,9 +28,9 @@
             <ul class="list-group" v-for="visit in patientsVisits" :key="visit.id">
               <li class="list-group-item mb-1" style="cursor:pointer" 
                   @click.prevent="redirectToVisitDetailPage(visit.id)">
-                 <a  style="color:black;text-decoration:none">
-                  {{ visit.patient.name }}
-                 </a>
+                  <a  style="color:black;text-decoration:none">
+                    {{ visit.patient.name }}
+                  </a>
               </li>
              
             </ul>
@@ -60,16 +60,16 @@ export default {
       error:false,
       successMessage:'',
       errorMessage:'',
-      visits:[]
+      referrals:[]
     }
   },
 
   computed:{
     patientsVisits(){
       if(this.patientId){
-        return this.visits.filter(visit => visit.patient.id == this.patientId);
+        return this.referrals.filter(referral => referral.patient.id == this.patientId);
       }
-      return this.visits;
+      return this.referrals;
     }
   },
 
@@ -78,17 +78,16 @@ export default {
   },
 
   methods:{
-    searchPatient(){
-
-    },
+    
     fetchPatients(){
       this.loading = true;
-      const url = '/patients/'+ this.department;
-
+      let url = '/patients/referral/'+ this.department; 
       axios.get(url)
       .then(({data})=>{
         this.loading = false;
-        this.visits  = data;
+        this.referrals  = data;
+
+        // console.log(data)
         
       })
       .catch(err=>{
@@ -98,10 +97,8 @@ export default {
 
     },
 
-    
-
     redirectToVisitDetailPage(id){
-      window.location.href = '/'+this.department+'/visit/'+id;
+      window.location.href = '/'+this.department+'/referrals/'+id;
     }
   }
 }

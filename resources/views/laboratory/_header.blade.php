@@ -10,7 +10,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/treatment">
+        <a class="nav-link" href="{{ route('lab.referrals')}}">
           <span data-feather="home"></span>
             Referrals
         </a>

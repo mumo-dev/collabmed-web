@@ -24,7 +24,9 @@ Vue.component('app-patient-create', require('./components/CreatePatient.vue').de
 Vue.component('app-reception', require('./components/Reception.vue').default);
 Vue.component('app-visit-details', require('./components/VisitDetails.vue').default);
 Vue.component('app-dashboard', require('./components/Dashboard.vue').default);
+Vue.component('app-referral-dashboard', require('./components/ReferralDashboard.vue').default);
 Vue.component('app-visit', require('./components/Visit.vue').default);
+Vue.component('app-referral', require('./components/Referral.vue').default);
 
 
 
