@@ -2427,6 +2427,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['visit'],
@@ -38901,7 +38902,7 @@ var render = function() {
   return _c("div", { staticClass: "col-md-12" }, [
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header bg-white" }, [
-        _vm._v("Patients Report Page")
+        _vm._v("Patients Report Page \n    ")
       ]),
       _vm._v(" "),
       _c(

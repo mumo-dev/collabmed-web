@@ -2,7 +2,8 @@
   <div class="col-md-12">
     
     <div class="card">
-      <div class="card-header bg-white">Patients Report Page</div>
+      <div class="card-header bg-white">Patients Report Page 
+      </div>
       <div class="card-body">
         <!-- You are logged in as receptionist! -->
 
